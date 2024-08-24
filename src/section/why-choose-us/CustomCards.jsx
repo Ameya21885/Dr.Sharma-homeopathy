@@ -39,6 +39,11 @@ const CustomCards = () => {
                   alignItems: 'center',    // Center horizontally
                   boxShadow: 3,
                   borderRadius: 2,
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth transition for hover effect
+                  '&:hover': {
+                    boxShadow: 6,          // Increase shadow on hover
+                    transform: 'scale(1.05)', // Slightly scale up the card on hover
+                  },
                 }}
               >
                 <CardContent

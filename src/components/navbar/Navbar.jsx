@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AppBar, Box, IconButton, Typography } from "@mui/material";
+import { AppBar, Avatar, Box, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -59,7 +59,10 @@ const Navbar = () => {
         >
           Dr.Sharma
         </Typography>
-        <IconButton onClick={toggleDrawer(false)} aria-label="close navigation menu">
+        <IconButton
+          onClick={toggleDrawer(false)}
+          aria-label="close navigation menu"
+        >
           <CloseIcon
             sx={{
               border: "2px solid black",
@@ -101,6 +104,41 @@ const Navbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <Box
+        sx={{
+          display: { xs: "none", sm: "flex" }, // Hide on mobile, show on tablet and desktop
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0rem 2.5rem",
+          backgroundColor: "#f5f5f5", // Optional background color for better contrast
+        }}
+      >
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{
+            fontFamily: "'Poppins', sans-serif", // Custom font
+            fontWeight: 600, // Semi-bold
+            color: "#333", // Dark gray color for text
+            fontSize: ".9rem", // Responsive font size
+          }}
+        >
+          Request An Appointment
+        </Typography>
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{
+            fontFamily: "'Poppins', sans-serif", // Custom font
+            fontWeight: 600, // Semi-bold
+            color: "#333", // Dark gray color for text
+            fontSize: { sm: "1rem", md: "1.2rem" }, // Responsive font size
+          }}
+        >
+          Call us (+91) 9675141090
+        </Typography>
+      </Box>
+
       <AppBar
         position="static"
         sx={{
@@ -126,49 +164,66 @@ const Navbar = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: { xs: ".6rem", md: "4rem" },
+              gap: { xs: ".6rem", md: "1rem" },
             }}
           >
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: { xs: "1rem", sm: "1.25rem" },
-                fontFamily: "'Poppins', sans-serif",
-                fontWeight: 600,
-              }}
-            >
-               Dr.Sharma
-            </Typography>
-
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                gap: { md: "1.5rem" },
-              }}
-            >
-              {pages.map((item, index) => (
-                <Typography
-                  key={index}
-                  component={Link}
-                  to={item.link}
-                  sx={{
-                    textDecoration: "none",
-                    color: "black",
-                    fontSize: { md: "1rem" },
-                    transition: "color 0.3s ease",
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: 500,
-                    "&:hover": {
-                      color: "#1976d2",
-                    },
-                  }}
-                >
-                  {item.title}
-                </Typography>
-              ))}
+            <Avatar
+              alt="Remy Sharp"
+              src="/favicon.jpg"
+              // sx={{ width: 56, height: 56 }}
+            />
+            <Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: { xs: "1rem", sm: "1.25rem" },
+                  // fontFamily: "'Oswald', sans-serif",
+                  fontFamily: 'Monospace',
+                  fontWeight: 600,
+                }}
+              >
+                Dr.Sharma
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  fontSize: { xs: ".9rem", sm: ".9rem" },
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: 600,
+                  fontStyle: 'italic'
+                }}
+              >
+                Homeopathy
+              </Typography>
             </Box>
           </Box>
-
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              gap: { md: "1.5rem" },
+            }}
+          >
+            {pages.map((item, index) => (
+              <Typography
+                key={index}
+                component={Link}
+                to={item.link}
+                sx={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: { md: "1rem" },
+                  transition: "color 0.3s ease",
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: 'bold',
+                  "&:hover": {
+                    color: "#1976d2",
+                  },
+                }}
+              >
+                {item.title}
+              </Typography>
+            ))}
+          </Box>
           <Box sx={{ display: "flex", gap: { xs: "0.5rem", sm: "1rem" } }}>
             <Box sx={{ display: { md: "none" } }}>
               <IconButton

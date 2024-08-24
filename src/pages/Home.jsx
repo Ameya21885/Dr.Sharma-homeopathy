@@ -5,6 +5,8 @@ import GetInTouch from "../section/get-in-touch/GetInTouch";
 import WhyChooseUs from "../section/why-choose-us/WhyChooseUs";
 import SeeHowWeWork from "../section/see-how-we-work/SeeHowWeWork";
 import { Box } from "@mui/material";
+import DiseasesCards from "../section/diseases-cards/DiseasesCards";
+import AlimentsTreated from "../section/aliments-treated/AlimentsTreated";
 
 const Home = () => {
   return (
@@ -17,7 +19,8 @@ const Home = () => {
           py: { xs: 2, sm: 4, md: 6 },
         }}
       >
-        <AboutUs />
+        <DiseasesCards />
+        {/* <AboutUs /> */}
       </Box>
       <Box
         sx={{
@@ -32,6 +35,13 @@ const Home = () => {
         }}
       >
         <WhyChooseUs />
+      </Box>
+      <Box
+        sx={{
+          py: { xs: 2, sm: 4, md: 6 },
+        }}
+      >
+        <AlimentsTreated />
       </Box>
       <Box
         sx={{

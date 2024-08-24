@@ -1,85 +1,85 @@
 import { Box, Button, Typography } from "@mui/material";
-import getintouch from "../../assets/get-in-touch.jpg";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const GetInTouch = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/about-us");
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Box
       sx={{
-        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         textAlign: "center",
-        color: "white",
-        width: "100%",
-        overflow: "hidden",
+        px: { xs: 2, sm: 4, md: 6 },
+        py: { xs: 4, sm: 6, md: 8 },
+        backgroundColor: "#f9f9f9",
+        borderRadius: "8px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <img
-        src={getintouch}
-        alt="Get in Touch"
-        style={{
-          width: "100%",
-          height: "20rem",
-          maxHeight: "500px",
-          objectFit: "cover",
-          objectPosition: "center",
-          "@media (min-width: 600px)": {
-            height: "auto", // Default height for larger screens
-          },
-        }}
-      />
-      <Box
+      <Typography
+        variant="h3"
+        gutterBottom
         sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: { xs: "80%", sm: "70%", md: "60%" },
-          p: 2,
-          textAlign: "center",
+          fontFamily: "'Poppins', sans-serif",
+          fontWeight: 700,
+          color: "#333",
+          mb: 2,
         }}
       >
-        <Typography
-          variant="h3"
-          gutterBottom
-          sx={{
-            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-            fontWeight: "bold",
-            mb: 2,
-          }}
-        >
-          Get in Touch
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          gutterBottom
-          sx={{
-            fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
-            lineHeight: 1.7,
-            mb: 2,
-          }}
-        >
-          Contact us today to schedule your consultation and start your journey
-          to optimal health and wellness. Your well-being is our priority at
-          Healing Hands Homoeopathy.
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 2,
-          }}
-        >
-          <Button
-            variant="contained"
-            sx={{
-              px: 3,
-              py: 1.5,
-              fontSize: { xs: "0.875rem", sm: "1rem" },
-            }}
-          >
-            Contact Us
-          </Button>
-        </Box>
-      </Box>
+        Welcome to our Homeopathy Clinic
+      </Typography>
+      <Typography
+        variant="h5"
+        gutterBottom
+        sx={{
+          fontFamily: "'Poppins', sans-serif",
+          fontWeight: 500,
+          color: "#555",
+          mb: 2,
+        }}
+      >
+        We’ve built a long-standing relationship based on trust
+      </Typography>
+      <Typography
+        variant="subtitle2"
+        gutterBottom
+        sx={{
+          fontFamily: "'Roboto', sans-serif",
+          fontWeight: 400,
+          color: "#777",
+          mb: 3,
+          maxWidth: "600px",
+        }}
+      >
+        Among the finest Homeopathic Doctors in the city, Dr. DAKSH Homeo Clinic
+        in Chhipitola, Agra is known for offering excellent patient care.
+      </Typography>
+      <Button
+        variant="contained"
+        onClick={handleClick}
+        sx={{
+          backgroundColor: "#1976d2",
+          color: "#fff",
+          fontFamily: "'Poppins', sans-serif",
+          fontWeight: 600,
+          px: 4,
+          py: 1.5,
+          borderRadius: "20px",
+          "&:hover": {
+            backgroundColor: "#1565c0",
+          },
+        }}
+      >
+        Read More
+      </Button>
     </Box>
   );
 };

@@ -1,5 +1,6 @@
-import { Avatar, Box, Card, CardContent, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Card, CardContent, Grid, Typography, Paper } from "@mui/material";
 import React from "react";
+// import ReviewCarousel from "./ReviewCarousel";
 
 const data = [
   {
@@ -26,22 +27,26 @@ const ReviewCards = () => {
   return (
     <Box
       sx={{
-        width: "70%",
+        width: { xs: "90%", sm: "80%", md: "70%" },
         margin: "auto",
-        p: { xs: 2, sm: 3 }, // Padding for responsiveness
+        p: { xs: 2, sm: 3 },
       }}
     >
       <Typography
-          variant="h2"
-          gutterBottom
-          sx={{
-            fontSize: { xs: "1.5rem", md: "2rem" },
-            fontWeight: "bold",
-            mb: 2,
-          }}
-        >
-          Review
-        </Typography>
+        variant="h2"
+        gutterBottom
+        sx={{
+          fontSize: { xs: "1.5rem", md: "2rem" },
+          fontWeight: "bold",
+          mb: 4,
+          textAlign: "center",
+          color: "primary.main", // Adding color to the heading
+        }}
+      >
+        What Our Clients Say
+      </Typography>
+
+      {/* <ReviewCarousel/> */}
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -55,7 +60,14 @@ const ReviewCards = () => {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  height: "100%", // Ensure all cards have equal height
+                  height: "100%",
+                  borderRadius: 2,
+                  boxShadow: 3,
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "scale(1.02)",
+                    boxShadow: 6,
+                  },
                 }}
               >
                 <CardContent
@@ -64,16 +76,20 @@ const ReviewCards = () => {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
+                    textAlign: "center",
+                    bgcolor: "background.paper", // Background color for card content
+                    borderBottom: (theme) => `1px solid ${theme.palette.divider}`, // Border for separation
                   }}
                 >
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     sx={{
                       mb: 2,
-                      textAlign: "center", // Center text alignment
+                      fontStyle: "italic",
+                      color: "text.secondary", // Slightly different color for description
                     }}
                   >
-                    {description}
+                    "{description}"
                   </Typography>
                 </CardContent>
                 <CardContent
@@ -82,19 +98,21 @@ const ReviewCards = () => {
                     alignItems: "center",
                     gap: 2,
                     p: 2,
+                    bgcolor: "background.default", // Background color for card footer
                   }}
                 >
                   <Avatar
                     alt={name}
                     src="/static/images/avatar/1.jpg"
-                    sx={{ width: 56, height: 56 }} // Consistent avatar size
+                    sx={{ width: 56, height: 56, border: `2px solid ${theme => theme.palette.primary.main}` }}
                   />
                   <Box>
                     <Typography
                       variant="h6"
                       component="div"
                       sx={{
-                        textAlign: "center", // Center text alignment
+                        fontWeight: "bold",
+                        color: "text.primary",
                       }}
                     >
                       {name}
@@ -102,7 +120,6 @@ const ReviewCards = () => {
                     <Typography
                       variant="subtitle2"
                       color="text.secondary"
-                      sx={{ textAlign: "center" }}
                     >
                       {designation}
                     </Typography>
